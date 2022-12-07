@@ -18,14 +18,14 @@ public class MedidasInternas {
 	private long id;
 	
 	private Date date;
-	private double fat, water, muscle,kcal,bone,kg;
+	private double imc,pesoDesejado,height,fat, water, muscle,kcal,bone,kg;
 	
 	
 	public MedidasInternas() {}
 
 	
  
-	public MedidasInternas(long id, Date date, double fat, double water, double muscle, double kcal, double bone,
+	public MedidasInternas(long id, Date date,double height , double fat, double water, double muscle, double kcal, double bone,
 			double kg, Owner owner) {
 		super();
 		this.id = id;
@@ -37,6 +37,7 @@ public class MedidasInternas {
 		this.bone = bone;
 		this.kg = kg;
 		this.owner = owner;
+		this.height = height;
 	}
 
 
@@ -44,6 +45,37 @@ public class MedidasInternas {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "owner")
 	private Owner owner;
+
+
+
+	
+	
+	
+	
+	public double getPesoDesejado() {
+		return 24.9 * (height*height);
+	}
+
+
+
+	public void setPesoDesejado(double pesoDesejado) {
+		this.pesoDesejado = pesoDesejado;
+	}
+
+
+
+	public double getImc() {
+		
+		
+		return kg/(height*height);
+	}
+
+
+
+	public void setImc(double imc) {
+		this.imc = imc;
+	}
+
 
 
 	public long getId() {
@@ -63,7 +95,9 @@ public class MedidasInternas {
 	}
 
 	public double getFat() {
-		return fat;
+		 int x=0;
+		 
+		 return x==0 ?  3 :  4;
 	}
 
 	public void setFat(double fat) {
@@ -109,6 +143,20 @@ public class MedidasInternas {
 	public void setKg(double kg) {
 		this.kg = kg;
 	}
+
+
+
+	public double getHeight() {
+		return height;
+	}
+
+
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
+	
 
 
 	
